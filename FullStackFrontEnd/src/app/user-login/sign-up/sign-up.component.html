@@ -1,0 +1,79 @@
+<form #form="ngForm" (ngSubmit)="OnRegister(form)">
+  
+    <p>Fields marked with * are required.</p>
+      <div class="form-group">
+          <label for="name">Name*</label>
+          <input id="name" name="name" class="form-control" 
+          [(ngModel)]="userForm.name"
+          required #nameField="ngModel" 
+          [class.field-error]="form.submitted && nameField.invalid">
+          <div [hidden]="!form.submitted || nameField.valid"
+            class="alert alert-danger">
+            Enter a name
+          </div>
+      </div>
+
+      <p> </p>
+      
+      <div class="form-group">
+        <label for="name">Email*</label>
+        <input id="passWord" name="email" class="form-control" 
+        [(ngModel)]="userForm.email" required #emailField="ngModel" 
+        [class.field-error]="form.submitted && emailField.invalid">
+        <div [hidden]="!form.submitted || emailField.valid"
+          class="alert alert-danger">
+          Enter an email address
+        </div>
+    </div>
+
+    <p> </p>
+    
+    <div class="form-group">
+          <label for="name">Password*</label>
+          <input id="passWord" name="passWord" class="form-control" 
+          [(ngModel)]="userForm.passWord"
+          required #passWordField="ngModel" 
+          [class.field-error]="form.submitted && passWordField.invalid">
+          <div [hidden]="!form.submitted || passWordField.valid"
+            class="alert alert-danger">
+            Enter a password
+          </div>
+      </div>
+
+      <p> </p>
+      
+      <div class="form-group">
+        <label for="name">Password Confirmation*</label>
+        <input id="passWordConfirmation" name="passWordConfirmation" class="form-control" 
+        required [(ngModel)]="passWordConfirmation" #passWordCheckField="ngModel"
+        [class.field-error]="form.submitted &&  passWordField!=passWordCheckField">
+        <div [hidden]="!form.submitted || passWordField!=passWordCheckField"
+          class="alert alert-danger">
+          Passwords must match
+        </div>
+    </div>
+
+    <p> </p>
+    
+    <div class="form-group">
+        <label for="name">Address*</label>
+        <input id="address" name="address" class="form-control" [(ngModel)]="userForm.address"
+        required #addressField="ngModel" 
+        [class.field-error]="form.submitted && addressField.invalid">
+        <div [hidden]="!form.submitted || addressField.valid" class="alert alert-danger">
+          Enter a address
+        </div>
+    </div>
+    <p> </p>
+    <div class="form-group">
+        <label>Age</label>
+        <input id="age" name="age" class="form-control" type="number"
+        [(ngModel)]="userForm.age"  #nameField="ngModel">
+        <!-- [class.invalid]="form.invalid && form.touched"> -->
+    </div>
+
+    <p> </p>
+    
+    <button class="btn btn-primary">Login</button>
+  
+  </form>

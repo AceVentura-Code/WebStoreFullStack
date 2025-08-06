@@ -1,0 +1,25 @@
+<div>
+    <button type="button" class="btn" [routerLink]="['/store-manager-mode/new']">New product</button>
+</div>
+<div class="table-responsive" id="table">
+    <table class="table table-striped mb-0" *ngIf="ProductList.length">
+        <thead>
+            <tr>
+                <th >Id</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let Product of ProductList">
+                <td><a [routerLink]="['/store-manager-mode', Product.id]">{{Product.id}}</a></td>
+                <td><a [routerLink]="['/store-manager-mode', Product.id]">{{Product.name}}</a></td>
+                <td>{{Product.rating}}</td>
+                <td>{{Product.price}}$</td>
+                <td><a class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(Product.id)">X</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

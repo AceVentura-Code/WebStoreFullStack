@@ -1,0 +1,34 @@
+<h4>These are our products</h4>
+<div class="table-responsive" id="table">
+    <div class="row">
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+
+        <button class="btn btn-primary" (click)="ConfirmAll()">Confirm All</button>
+        <div>&nbsp;</div>
+        <button class="btn btn-primary" [routerLink]="['/product-search']">Advanced Search</button>
+    </div>
+    <table class="table table-striped mb-0" *ngIf="ProductList.length">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>&nbsp;</th>
+                <th>Basket</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let Product of BasketListShow">
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.name}}</a></td>
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.rating}}</a></td>
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.price}}$</a></td>
+                <td *ngIf="Product.amount!=0" ><button (click)="amountDecrement(Product)">-</button>&nbsp;{{Product.amount}}</td><td *ngIf="Product.amount==0">&nbsp;</td> 
+                <td><button (click)="amountIncrement(Product)">+</button>&nbsp;<button (click)="AddToBasket(Product.product, Product.amount)">Confirm</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>what do you think?</p>

@@ -1,0 +1,92 @@
+<div class="container col-md-12 col-lg-12">
+    
+    <div class="display title">
+        <h3>Name: {{product?.name}}</h3>
+    </div>
+    <form #form="ngForm">
+        <!-- (ngSubmit)="OnSubmit(form)"> -->
+
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input id="name" name="name" class="form-control" 
+            [(ngModel)]="product.name"
+            required #nameField="ngModel" 
+            [class.field-error]="form.submitted && nameField.invalid">
+            <div [hidden]="!form.submitted || nameField.valid"
+            class="alert alert-danger">
+            Enter a Name
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="price">Price($) : </label>
+                    <input id="price" name="price" class="form-control" 
+                    [(ngModel)]="product.price"
+                    required #priceField="ngModel" type="number"
+                    [class.field-error]="form.submitted && priceField.invalid">
+                    <div [hidden]="!form.submitted || priceField.valid"
+                    class="alert alert-danger">
+                    Enter a price
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="rating">Rating : </label>
+                    <input id="rating" name="rating" class="form-control" 
+                    [(ngModel)]="product.rating"
+                    required #ratingField="ngModel" type="number"
+                        [class.field-error]="form.submitted && ratingField.invalid">
+                        <div [hidden]="!form.submitted || ratingField.valid"
+                        class="alert alert-danger">
+                        Enter a rating
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-control" rows="5" [(ngModel)]="product.description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <textarea id="tags" name="tags" class="form-control" rows="5" [(ngModel)]="product.tags"></textarea>
+        </div>
+        <button (click)="OnSubmit(this.form)">Submit</button>
+
+    </form>
+        
+    
+    <div class="container">
+            <div class="col-md-2 col-lg-2">
+                <div class="image" *ngIf="product?.imageUrl">
+                    <img src="{{product?.imageUrl}}">
+                </div>
+            </div>
+            
+        <!-- <div class="col-md-9 col-lg-9 card">
+            <div class="info">
+                <p>$: {{product?.price}}</p>
+                <p>rated: {{product?.rating}}</p>
+            </div>
+            <div class="description">
+                <p>Description: {{product?.description}}</p>
+                <p>{{product?.tags}}</p>
+            </div>
+        </div> -->
+
+
+        
+        <div class="card"><!-- *ngIf="UserInfo?.accessLevel=='adminAccess'"> -->
+            Options for admin access
+            
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-primary" [routerLink]="['/store-manager-mode']">Back</button>
+</div>

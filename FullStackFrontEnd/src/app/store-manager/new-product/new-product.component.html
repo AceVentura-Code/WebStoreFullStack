@@ -1,0 +1,65 @@
+<p>new-product works!</p>
+
+<div class="container col-md-12 col-lg-12">
+    
+    <form #form="ngForm">
+        <!-- (ngSubmit)="OnSubmit(form)"> -->
+
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input id="name" name="name" class="form-control" 
+            [(ngModel)]="productNew.name"
+            required #nameField="ngModel" 
+            [class.field-error]="form.submitted && nameField.invalid">
+            <div [hidden]="!form.submitted || nameField.valid"
+            class="alert alert-danger">
+            Enter a Name
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="price">Price($) : </label>
+                    <input id="price" name="price" class="form-control" 
+                    [(ngModel)]="productNew.price"
+                    required #priceField="ngModel" type="number"
+                    [class.field-error]="form.submitted && priceField.invalid">
+                    <div [hidden]="!form.submitted || priceField.valid"
+                    class="alert alert-danger">
+                    Enter a price
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="rating">Rating : </label>
+                    <input id="rating" name="rating" class="form-control" 
+                    [(ngModel)]="productNew.rating"
+                    required #ratingField="ngModel" type="number"
+                        [class.field-error]="form.submitted && ratingField.invalid">
+                        <div [hidden]="!form.submitted || ratingField.valid"
+                        class="alert alert-danger">
+                        Enter a rating
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" class="form-control" rows="5" [(ngModel)]="productNew.description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <textarea id="tags" name="tags" class="form-control" rows="5" [(ngModel)]="productNew.tags"></textarea>
+        </div>
+        <button (click)="OnSubmit(this.form)">Submit</button>
+
+    </form>
+        
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-primary" [routerLink]="['/store-manager-mode']">Back</button>
+</div>

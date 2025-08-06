@@ -1,0 +1,36 @@
+<p>basket-products works!</p>
+
+<div class="table-responsive" id="table">
+    <div *ngIf="BasketList.length">
+        <button class="btn btn-primary" (click)="OnUpdate()">Update</button>&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" (click)="OnBuy()">Confirm Purchase</button>
+    </div>
+    <table class="table table-striped mb-0" *ngIf="BasketList.length">
+        <thead>
+            <tr>
+                <th >Id</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let Product of BasketList">
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.id}}</a></td>
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.name}}</a></td>
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.rating}}</a></td>
+                <td><a [routerLink]="['/products', Product.product.id]">{{Product.product.price}}$</a></td>
+                <td>{{Product.amount}}</td>
+                <td><button (click)="amountDecrement(Product)">-</button> {{Product.amount}} <button (click)="amountIncrement(Product)">+</button>
+                    <!-- <button (click)="AddToBasket(Product.product, Product.amount)">Confirm</button> -->
+                </td>
+            </tr>
+        </tbody>
+        <p>&nbsp;</p>
+        <!-- <div  *ngIf="BasketList.length">
+        </div> -->
+    </table>
+    <table *ngIf="!BasketList.length">
+        <thead><tr><th>:(</th></tr></thead>
+        <tbody> <tr><th>Nothing in cart</th></tr></tbody>
+    </table>

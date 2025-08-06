@@ -1,0 +1,34 @@
+<div class="filtrarProducts">
+    <div class="row">
+        <div class="col-fil-1 col-md-2">Filtrar:</div>
+        <div class="col-fil-2 col-md-2">
+            <input class="form-control" type="text"  [(ngModel)]="listFilter" />
+        </div>
+        <div class="col-fil-3 col-md-3">
+    </div>
+</div>
+<div class="table-responsive" id="table">
+    <button class="btn btn-primary" (click)="ConfirmAll()">Confirm All</button>
+    <table class="table table-striped mb-0" *ngIf="ProductFilteredList.length">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let Product of ProductFilteredList">
+                <td><a [routerLink]="['/products', Product.id]">{{Product.name}}</a></td>
+                <td><a [routerLink]="['/products', Product.id]">{{Product.rating}}</a></td>
+                <td><a [routerLink]="['/products', Product.id]">{{Product.price}}$</a></td>
+                <!-- <td><button (click)="amountDecrement(Product)">-</button> {{Product.amount}} <button (click)="amountIncrement(Product)">+</button>&nbsp;<button (click)="AddToBasket(Product.product, Product.amount)">Confirm</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!ProductFilteredList.length">
+        <h3>404 :(</h3>
+        <p>No matches found.</p>
+    </div>
+</div>
+<p>what do you think?</p>
