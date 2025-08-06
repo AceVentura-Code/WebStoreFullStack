@@ -1,15 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-//using System.Data.Entity;
+﻿//using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projeto_FullStack.Data
 {
-    public class StoreContext : DbContext
+    public class StoreContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public DbSet<Order>? Orders { get; set; }
+        public StoreContext() { }
 
-        public DbSet<Product>? Products { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Order>? Orders { get; set; }
 
-        public DbSet<User>? Users { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Product>? Products { get; set; }
+
+        public Microsoft.EntityFrameworkCore.DbSet<User>? Users { get; set; }
 
 
 
